@@ -1,4 +1,6 @@
 ---
+- include: preflight.yml
+  become: false
 - include: install.yml
   become: true
 - include: configure.yml

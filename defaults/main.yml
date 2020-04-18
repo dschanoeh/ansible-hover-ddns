@@ -1,5 +1,5 @@
 ---
-hover_ddns_version: "v0.1.0"
+hover_ddns_version: "latest"
 hover_ddns_binary_install_dir: "/usr/local/bin"
 hover_ddns_config_file_path: "/etc/hover-ddns.yaml"
 hover_ddns_force_update: false

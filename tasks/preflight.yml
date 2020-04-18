@@ -1,0 +1,17 @@
+---
+- name: Get latest release
+  uri:
+    url: "https://api.github.com/repos/dschanoeh/hover-ddns/releases/latest"
+    method: GET
+    return_content: true
+    status_code: 200
+    body_format: json
+    validate_certs: false
+  register: _latest_release
+  until: _latest_release.status == 200
+  retries: 5
+- name: "Setting version to {{ _latest_release.json.tag_name }}"
+  set_fact:
+    hover_ddns_version: "{{ _latest_release.json.tag_name }}"
+  when:
+    - hover_ddns_version == "latest"

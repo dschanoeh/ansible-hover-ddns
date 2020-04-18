@@ -12,7 +12,7 @@ An Ansible role that installs the [hover-ddns]([a](https://github.com/dschanoeh/
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `hover_ddns_version` | v0.1.0 | Version of hover-ddns to be installed |
+| `hover_ddns_version` | latest | Version of hover-ddns to be installed. You can use 'latest' or e.g. 'v0.1.0' |
 | `hover_ddns_binary_install_dir` | /usr/local/bin | Installation directory for the hover-ddns binary |
 | `hover_ddns_config_file_path` | /etc/hover-ddns.yaml | Location of the config file |
 | `hover_ddns_force_update` | false | Configuration option to force an update even when the public IP didn't change |

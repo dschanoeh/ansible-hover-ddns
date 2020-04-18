@@ -1,0 +1,14 @@
+---
+- include: install.yml
+  become: true
+- include: configure.yml
+  become: true
+- name: Enable and start timer
+  become: true
+  systemd:
+    name: hover-ddns.timer
+    enabled: true
+    state: started
+    masked: false
+    daemon_reload: true
+  tags: notest

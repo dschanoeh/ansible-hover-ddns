@@ -1,0 +1,8 @@
+---
+- name: Install config file
+  become: true
+  template:
+    src: "config.yaml"
+    dest: "hover_ddns_config_file_path"
+    owner: root
+    mode: "u=rw,g=,o="

@@ -1,0 +1,45 @@
+---
+- name: Download binaries to local folder
+  become: false
+  get_url:
+    url: "https://github.com/dschanoeh/hover-ddns/releases/download/{{ hover_ddns_version }}/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
+    dest: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
+    force: true
+  register: _download_archive
+  until: _download_archive is succeeded
+  retries: 5
+  delay: 2
+  delegate_to: localhost
+  check_mode: false
+- name: Extract archive
+  become: false
+  unarchive:
+    src: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/hover-ddns"
+  delegate_to: localhost
+  check_mode: false
+- name: Propagate binary
+  copy:
+    src: "/tmp/hover-ddns"
+    dest: "{{ hover_ddns_binary_install_dir }}/hover-ddns"
+    owner: root
+    group: root
+    mode: "u=rwx,g=rx,o=rx"
+  become: true
+- name: Install service unit
+  become: true
+  template:
+    src: "hover-ddns.service"
+    dest: /etc/systemd/system/hover-ddns.service
+    owner: root
+    group: root
+    mode: "u=rw,g=r,o=r"
+- name: Install timer unit
+  become: true
+  template:
+    src: "hover-ddns.timer"
+    dest: /etc/systemd/system/hover-ddns.timer
+    owner: root
+    group: root
+    mode: "u=rw,g=r,o=r"

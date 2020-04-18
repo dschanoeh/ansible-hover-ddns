@@ -1,0 +1,8 @@
+---
+username: "{{hover_ddns_username}}"
+password: "{{hover_ddns_password}}"
+# Set the relative(!) hostname to be updated
+hostname: "{{hover_ddns_hostname}}"
+domain_name: "{{hover_ddns_domain}}"
+# Set to true to update even if the IP already is up to date
+force_update: {{hover_ddns_force_update}}

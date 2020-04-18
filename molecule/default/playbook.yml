@@ -1,0 +1,11 @@
+---
+- name: Run role
+  hosts: all
+  any_errors_fatal: true
+  roles:
+    - ansible-hover-ddns
+  vars:
+    hover_ddns_username: "test_user"
+    hover_ddns_password: "test_password"
+    hover_ddns_hostname: "test_hostname"
+    hover_ddns_domain: "test_domain"

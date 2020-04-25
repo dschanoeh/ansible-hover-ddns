@@ -3,7 +3,7 @@
   become: true
   template:
     src: "config.yaml"
-    dest: "hover_ddns_config_file_path"
+    dest: "{{ hover_ddns_config_file_path }}"
     owner: root
     mode: "u=rw,g=,o="
     validate: "{{ hover_ddns_binary_install_dir }}/hover-ddns --validate-config %s"

@@ -4,23 +4,29 @@
   get_url:
     url: "https://github.com/dschanoeh/hover-ddns/releases/download/{{ hover_ddns_version }}/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
     dest: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
-    force: true
   register: _download_archive
   until: _download_archive is succeeded
   retries: 5
   delay: 2
   delegate_to: localhost
   check_mode: false
+- name: Create extraction dir
+  file:
+    path: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}"
+    state: directory
+  delegate_to: localhost
+  become: false
 - name: Extract archive
   become: false
   unarchive:
     src: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
-    dest: "/tmp"
+    dest: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}"
+    creates: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}/hover-ddns"
   delegate_to: localhost
   check_mode: false
 - name: Propagate binary
   copy:
-    src: "/tmp/hover-ddns"
+    src: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}/hover-ddns"
     dest: "{{ hover_ddns_binary_install_dir }}/hover-ddns"
     owner: root
     group: root

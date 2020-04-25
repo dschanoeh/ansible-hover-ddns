@@ -10,6 +10,8 @@
   register: _latest_release
   until: _latest_release.status == 200
   retries: 5
+  when:
+    - hover_ddns_version == "latest"
 - name: "Setting version to {{ _latest_release.json.tag_name }}"
   set_fact:
     hover_ddns_version: "{{ _latest_release.json.tag_name }}"

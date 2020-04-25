@@ -1,8 +1,12 @@
 ---
 username: "{{hover_ddns_username}}"
 password: "{{hover_ddns_password}}"
-# Set the relative(!) hostname to be updated
 hostname: "{{hover_ddns_hostname}}"
 domain_name: "{{hover_ddns_domain}}"
-# Set to true to update even if the IP already is up to date
 force_update: {{hover_ddns_force_update}}
+disable_ipv4: {{hover_ddns_disable_ipv4}}
+disable_ipv6: {{hover_ddns_disable_ipv4}}
+dns_server: {{hover_ddns_dns_server}}
+public_ip_provider:
+  service: {{hover_ddns_public_ip_service}}
+  interface_name: {{hover_ddns_interface_name}}

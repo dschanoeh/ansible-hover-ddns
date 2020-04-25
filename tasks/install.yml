@@ -16,7 +16,6 @@
   unarchive:
     src: "/tmp/hover-ddns_{{ hover_ddns_version[1:] }}_Linux_{{ ansible_architecture }}.tar.gz"
     dest: "/tmp"
-    creates: "/tmp/hover-ddns"
   delegate_to: localhost
   check_mode: false
 - name: Propagate binary

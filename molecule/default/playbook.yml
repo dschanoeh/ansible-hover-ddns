@@ -9,3 +9,4 @@
     hover_ddns_password: "test_password"
     hover_ddns_hostname: "test_hostname"
     hover_ddns_domain: "test_domain"
+    no_handler_execution: true

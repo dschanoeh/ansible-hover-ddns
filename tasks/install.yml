@@ -38,6 +38,8 @@
     group: "{{ hover_ddns_systemuser }}"
     mode: "u=rwx,g=rx,o=rx"
   become: true
+  notify:
+    - restart hover-ddns
 - name: Install service unit
   become: true
   template:
@@ -46,3 +48,5 @@
     owner: root
     group: root
     mode: "u=rw,g=r,o=r"
+  notify:
+    - restart hover-ddns

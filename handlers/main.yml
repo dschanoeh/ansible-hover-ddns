@@ -1,0 +1,8 @@
+---
+- name: restart hover-ddns
+  become: true
+  systemd:
+    daemon_reload: true
+    name: hover-ddns
+    state: restarted
+  when: no_handler_execution is undefined

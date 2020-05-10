@@ -7,3 +7,5 @@
     owner: "{{ hover_ddns_systemuser }}"
     mode: "u=rw,g=,o="
     validate: "{{ hover_ddns_binary_install_dir }}/hover-ddns --validate-config %s"
+  notify:
+    - restart hover-ddns

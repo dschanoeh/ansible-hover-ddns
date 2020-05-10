@@ -5,10 +5,10 @@
   become: true
 - include: configure.yml
   become: true
-- name: Enable and start timer
+- name: Enable and start service
   become: true
   systemd:
-    name: hover-ddns.timer
+    name: hover-ddns.service
     enabled: true
     state: started
     masked: false

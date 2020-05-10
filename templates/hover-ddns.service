@@ -2,8 +2,11 @@
 Description=Hover DDNS Updater
 After=network-online.target
 Wants=network-online.target
-OnFailure=status-email-example@%n.service
+User={{ hover_ddns_systemuser }}
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/local/bin/hover-ddns --config /etc/hover-ddns.yaml
+
+[Install]
+WantedBy=multi-user.target

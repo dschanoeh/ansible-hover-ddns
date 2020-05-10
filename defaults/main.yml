@@ -8,3 +8,5 @@ hover_ddns_disable_ipv6: false
 hover_ddns_dns_server: "8.8.8.8:53"
 hover_ddns_public_ip_service: "opendns"
 hover_ddns_interface_name: "eth0"
+hover_ddns_systemuser: "hover-ddns"
+hover_ddns_cron_expression: "*/15 * * * *"

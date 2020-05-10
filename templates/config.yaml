@@ -6,8 +6,8 @@ domain_name: "{{hover_ddns_domain}}"
 force_update: {{hover_ddns_force_update}}
 disable_ipv4: {{hover_ddns_disable_ipv4}}
 disable_ipv6: {{hover_ddns_disable_ipv4}}
-dns_server: {{hover_ddns_dns_server}}
-cron_expression: {{hover_ddns_cron_expression}}
+dns_server: "{{hover_ddns_dns_server}}"
+cron_expression: "{{hover_ddns_cron_expression}}"
 public_ip_provider:
-  service: {{hover_ddns_public_ip_service}}
-  interface_name: {{hover_ddns_interface_name}}
+  service: "{{hover_ddns_public_ip_service}}"
+  interface_name: "{{hover_ddns_interface_name}}"

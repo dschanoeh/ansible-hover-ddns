@@ -2,11 +2,11 @@
 Description=Hover DDNS Updater
 After=network-online.target
 Wants=network-online.target
-User={{ hover_ddns_systemuser }}
 
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/hover-ddns --config /etc/hover-ddns.yaml
+User={{ hover_ddns_systemuser }}
 
 [Install]
 WantedBy=multi-user.target
